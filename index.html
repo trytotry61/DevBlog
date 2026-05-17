@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - DevBlog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;600;700&display=swap');
+
+        :root {
+            --primary: #1d2b3e;
+            --surface: #faf8ff;
+            --surface-container: #eaedff;
+            --on-surface: #131b2e;
+            --outline-variant: #E2E8F0;
+            --charcoal: #0F172A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: var(--on-surface);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main { flex: 1; }
+
+        h1, h2, h3, h4, h5, h6, .display-4, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            color: var(--charcoal);
+        }
+
+        h1 { font-size: 36px; font-weight: 600; line-height: 1.3; }
+        h2 { font-size: 28px; font-weight: 600; line-height: 1.4; }
+        h5 { font-size: 18px; font-weight: 600; }
+        
+        .display-lg { font-size: 56px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+        .body-lg { font-size: 20px; line-height: 1.7; }
+        .body-md { font-size: 16px; line-height: 1.6; }
+        
+        .label-caps {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.0;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .navbar {
+            background-color: #FFFFFF !important;
+            border-bottom: 1px solid var(--outline-variant);
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        .navbar-brand { color: var(--charcoal) !important; font-size: 24px; font-weight: 700;}
+        .nav-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--on-surface) !important;
+            position: relative;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: 0; left: 0; background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .card {
+            background-color: #F8FAFC;
+            border: 1px solid var(--outline-variant);
+            border-radius: 0; 
+            padding: 2rem;
+            box-shadow: none !important;
+        }
+        .card-body { padding: 0; }
+        .sidebar-card { padding: 1.5rem; background-color: #FFFFFF; }
+        img, .carousel-item img { border-radius: 0 !important; }
+        .btn-primary {
+            background-color: var(--charcoal);
+            border-color: var(--charcoal);
+            color: #FFFFFF;
+            border-radius: 0.25rem;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 0.75rem 1.5rem;
+        }
+        .btn-primary:hover { background-color: #000000; border-color: #000000; color: #FFFFFF; }
+        
+        .form-control {
+            border: 1px solid var(--outline-variant);
+            border-radius: 0.25rem;
+            padding: 0.6rem 1rem;
+            font-size: 14px;
+        }
+        .form-control:focus { box-shadow: none; border-color: var(--primary); background-color: transparent; }
+        .badge-category {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            background-color: var(--surface-container) !important;
+            color: var(--primary) !important;
+            border: 1px solid var(--outline-variant);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s;
+        }
+        .badge-category:hover { background-color: #E2E7FF !important; }
+        .carousel-caption {
+            background: #F8FAFC !important;
+            color: var(--charcoal) !important;
+            border: 1px solid var(--outline-variant);
+            border-radius: 0 !important;
+            padding: 2rem !important;
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 2rem;
+        }
+        .carousel-caption h5 { color: var(--charcoal); font-size: 24px; margin-bottom: 0.5rem; }
+        .carousel-caption p { color: #44474c; font-family: 'Inter', sans-serif; margin-bottom: 0; }
+
+        footer {
+            background-color: #FFFFFF !important;
+            border-top: 1px solid var(--outline-variant);
+            color: var(--charcoal) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-braces me-2"></i>DevBlog.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border:none;">
+                <i class="bi bi-list fs-2" style="color: var(--charcoal);"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3 mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Главная</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Рубрики</a>
+                        <ul class="dropdown-menu rounded-0 border-0 border-start border-1" style="background: #F8FAFC; border-color: var(--outline-variant)!important;">
+                            <li><a class="dropdown-item label-caps" href="#">Frontend</a></li>
+                            <li><a class="dropdown-item" href="#">Backend</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">Проекты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mb-5 mt-5">
+        <div class="row">
+            
+            <div class="col-lg-8">
+                
+                <div id="blogCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#blogCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#blogCarousel" data-bs-slide-to="1"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&h=400&q=80" class="d-block w-100 object-fit-cover" height="400" alt="Slide 1">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Bootstrap 5</h5>
+                                <p>Создание адаптивных интерфейсов по строгим канонам дизайна.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&h=400&q=80" class="d-block w-100 object-fit-cover" height="400" alt="Slide 2">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Современная архитектура</h5>
+                                <p>Разделение на модули и чистота кодовой базы.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#blogCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" ></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#blogCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" ></span>
+                    </button>
+                </div>
+
+                <article class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="label-caps text-muted">15 Янв 2026 - Разработка</span>
+                        </div>
+                        <h2 class="card-title mb-3">Инофрмационный мусор в интерфейсах</h2>
+                        <p class="card-text text-muted body-md mb-4">Узнайте, как использовать сеточную систему и готовые компоненты для создания адаптивных интерфейсов за считанные часы, сохраняя строгость и уникальный стиль интерфейса...</p>
+                        <a href="#" class="btn btn-primary">Читать далее</a>
+                    </div>
+                </article>
+
+                <article class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="label-caps text-muted">10 Янв 2026 - Bootstrap</span>
+                        </div>
+                        <h2 class="card-title mb-3">Учимся тестированию с помощью Bootstrap</h2>
+                        <p class="card-text text-muted body-md mb-4">Ознакомительное руководство по использованию Bootstrap для создания веб-страниц и тестирования. Здесь вы узнаете, из чего состоит фреймворк Bootstrap, какие есть варианты его установки и использования, а также как именно с его помощью можно создавать веб-страницы и тестировать их...</p>
+                        <a href="#" class="btn btn-primary">Читать далее</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                
+                <div class="card sidebar-card mb-4">
+                    <div class="card-body">
+                        <h5 class="mb-3">Поиск по блогу</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Найти...">
+                            <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card sidebar-card mb-4 text-center">
+                    <div class="py-3">
+                        <img src="https://ui-avatars.com/api/?name=Egor&size=90&background=1d2b3e&color=fff" class="mb-3" alt="Avatar" style="width: 90px; height: 90px;">
+                        <h5 class="mb-2">Егор Куракин</h5>
+                        <p class="text-muted body-md px-2 mb-4">Я студент КФ МГТУ им.Баумана.Обучаюсь на направлении "Прикладная инофрматика"</p>
+                        <div class="d-flex justify-content-center gap-4">
+                            <a href="https://github.com/trytotry61" class="text-dark fs-4"><i class="bi bi-github"></i></a>
+                            <a href="@ichhabekeinherz" class="text-dark fs-4"><i class="bi bi-telegram"></i></a>
+                            <a href="https://mail.yandex.ru/?from=tableau_yabro&uid=791649352#/tabs/relevant" class="text-dark fs-4"><i class="bi bi-envelope-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card sidebar-card mb-4">
+                    <div class="card-body">
+                        <h5 class="mb-3">Популярные темы</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="#" class="badge-category">Bootstrap 5</a>
+                            <a href="#" class="badge-category">Java</a>
+                            <a href="#" class="badge-category">UI/UX Design</a>
+                            <a href="#" class="badge-category">Python</a>
+                            <a href="#" class="badge-category">Node.js</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+    </div>
+
+    <footer class="py-5 mt-auto">
+        <div class="container text-center">
+            <div class="mb-3 label-caps">
+                <a href="#" class="text-dark text-decoration-none mx-3">Политика конфиденциальности</a>
+                <a href="#" class="text-dark text-decoration-none mx-3">Условия использования</a>
+            </div>
+            <p class="mb-0 small text-muted label-caps">&copy; 2026 DevBlog. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
