@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -9,23 +10,38 @@
     <meta name="description" content="DevBlog — блог разработчика. Контакты и социальные сети.">
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --bg:        #050806;
-            --fg:        oklch(0.86 0.12 145);
-            --fg-dim:    oklch(0.62 0.08 145);
-            --fg-mute:   oklch(0.40 0.04 145);
-            --amber:     oklch(0.84 0.13 85);
-            --red:       oklch(0.72 0.18 25);
-            --glow:      0 0 1px currentColor, 0 0 8px color-mix(in oklch, currentColor 18%, transparent);
-            --font:      'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-            --maxw:      820px;
+            --bg: #050806;
+            --fg: oklch(0.86 0.12 145);
+            --fg-dim: oklch(0.62 0.08 145);
+            --fg-mute: oklch(0.40 0.04 145);
+            --amber: oklch(0.84 0.13 85);
+            --red: oklch(0.72 0.18 25);
+            --glow: 0 0 1px currentColor, 0 0 8px color-mix(in oklch, currentColor 18%, transparent);
+            --font: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+            --maxw: 820px;
         }
 
-        *, *::before, *::after { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; background: var(--bg); }
-        html { scroll-behavior: smooth; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             color: var(--fg);
             font: 14px/1.6 var(--font);
@@ -36,18 +52,22 @@
             caret-color: var(--fg);
             overflow-x: hidden;
         }
-        @media (min-width: 720px) { body { font-size: 15px; } }
+
+        @media (min-width: 720px) {
+            body {
+                font-size: 15px;
+            }
+        }
 
         body::before {
             content: "";
-            position: fixed; inset: 0;
-            background: repeating-linear-gradient(
-                to bottom,
-                rgba(0,0,0,0) 0,
-                rgba(0,0,0,0) 2px,
-                rgba(0,0,0,0.14) 3px,
-                rgba(0,0,0,0) 4px
-            );
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0) 0,
+                    rgba(0, 0, 0, 0) 2px,
+                    rgba(0, 0, 0, 0.14) 3px,
+                    rgba(0, 0, 0, 0) 4px);
             pointer-events: none;
             z-index: 50;
             mix-blend-mode: multiply;
@@ -61,8 +81,15 @@
             text-shadow: var(--glow);
         }
 
-        a { color: inherit; text-decoration: none; }
-        a:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:focus-visible {
+            outline: 1px solid var(--fg);
+            outline-offset: 2px;
+        }
 
 
         .head {
@@ -73,17 +100,25 @@
             justify-content: space-between;
             gap: 4px 14px;
         }
+
         .head .name {
             color: var(--fg);
             font-weight: 700;
             font-size: 1.05em;
         }
-        .head .name::before { content: "> "; color: var(--fg-mute); font-weight: 400; }
+
+        .head .name::before {
+            content: "> ";
+            color: var(--fg-mute);
+            font-weight: 400;
+        }
+
         .nav-links {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
         }
+
         .nav-links a {
             font-size: 0.8rem;
             letter-spacing: 0.02em;
@@ -91,12 +126,15 @@
             color: var(--fg-dim);
             transition: color 0.1s;
         }
+
         .nav-links a:hover {
             color: var(--fg);
         }
+
         .nav-links a.active {
             color: var(--fg);
         }
+
         .nav-links a.active::after {
             content: '';
             position: absolute;
@@ -108,8 +146,17 @@
         }
 
 
-        .section { margin: 28px 0; opacity: 0; transform: translateY(2px); }
-        .section.in { opacity: 1; transform: none; transition: opacity 220ms ease, transform 220ms ease; }
+        .section {
+            margin: 28px 0;
+            opacity: 0;
+            transform: translateY(2px);
+        }
+
+        .section.in {
+            opacity: 1;
+            transform: none;
+            transition: opacity 220ms ease, transform 220ms ease;
+        }
 
         .section h2 {
             font-size: inherit;
@@ -121,7 +168,13 @@
             align-items: center;
             gap: 10px;
         }
-        .section h2::before { content: ">"; color: var(--fg-mute); font-weight: 400; }
+
+        .section h2::before {
+            content: ">";
+            color: var(--fg-mute);
+            font-weight: 400;
+        }
+
         .section h2 .rest {
             flex: 1;
             border-bottom: 1px dashed var(--fg-mute);
@@ -129,6 +182,7 @@
             margin-left: 4px;
             opacity: .6;
         }
+
         .section h2 .count {
             color: var(--fg-mute);
             font-weight: 400;
@@ -143,7 +197,12 @@
             grid-template-columns: 1fr;
             gap: 2px 18px;
         }
-        @media (min-width: 600px) { .links { grid-template-columns: 1fr 1fr; } }
+
+        @media (min-width: 600px) {
+            .links {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
         .link {
             display: grid;
@@ -156,6 +215,7 @@
             min-height: 36px;
             position: relative;
         }
+
         .link .count-num {
             color: var(--fg-mute);
             font-size: 0.82em;
@@ -164,9 +224,16 @@
             transition: opacity 200ms linear;
             white-space: nowrap;
         }
-        .link .count-num.has-value { opacity: 0.7; }
+
+        .link .count-num.has-value {
+            opacity: 0.7;
+        }
+
         .link:hover .count-num.has-value,
-        .link:focus-visible .count-num.has-value { opacity: 1; }
+        .link:focus-visible .count-num.has-value {
+            opacity: 1;
+        }
+
         .link::before {
             content: "›";
             position: absolute;
@@ -175,21 +242,37 @@
             opacity: 0;
             transition: opacity 80ms linear, transform 80ms ease;
         }
-        .link:hover, .link:focus-visible {
+
+        .link:hover,
+        .link:focus-visible {
             background: color-mix(in oklch, var(--fg) 6%, transparent);
             border-color: color-mix(in oklch, var(--fg) 28%, transparent);
             outline: none;
         }
-        .link:hover::before, .link:focus-visible::before { opacity: 1; transform: translateX(2px); }
+
+        .link:hover::before,
+        .link:focus-visible::before {
+            opacity: 1;
+            transform: translateX(2px);
+        }
+
         .link .icon {
-            width: 18px; height: 18px;
+            width: 18px;
+            height: 18px;
             color: var(--fg);
             flex: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
         }
-        .link .icon svg { width: 100%; height: 100%; fill: currentColor; display: block; }
+
+        .link .icon svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+            display: block;
+        }
+
         .link .name {
             color: var(--fg);
             letter-spacing: 0.01em;
@@ -197,11 +280,13 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
         .link .name .sub {
             color: var(--fg-mute);
             font-size: 0.85em;
             margin-left: 4px;
         }
+
         .link .tag {
             font-size: 0.7em;
             letter-spacing: 0.14em;
@@ -212,12 +297,17 @@
             line-height: 1;
             white-space: nowrap;
         }
-        .link .tag.support { color: var(--amber); }
+
+        .link .tag.support {
+            color: var(--amber);
+        }
+
         .contact-block {
             margin: 16px 0 24px;
             border-left: 1px solid var(--fg-mute);
             padding: 4px 0 4px 18px;
         }
+
         .contact-line {
             margin: 12px 0;
             display: flex;
@@ -225,26 +315,32 @@
             align-items: baseline;
             gap: 8px;
         }
+
         .contact-label {
             color: var(--amber);
             min-width: 70px;
             font-size: 0.85em;
         }
+
         .contact-value {
             color: var(--fg);
             word-break: break-all;
         }
+
         .contact-value a {
             border-bottom: 1px dotted var(--fg-mute);
             transition: border-color 0.1s;
         }
+
         .contact-value a:hover {
             border-bottom-color: var(--fg);
         }
+
         .warn {
             color: var(--amber);
             font-size: 0.8em;
         }
+
         small {
             color: var(--fg-mute);
             font-size: 0.75em;
@@ -256,13 +352,38 @@
             margin: 18px 0 4px;
             word-break: break-word;
         }
-        #output > div { margin-bottom: 4px; }
-        #output .cmd { color: var(--fg); }
-        #output .cmd .ps1 { color: var(--amber); }
-        #output .out { color: var(--fg-dim); display: block; }
-        #output .out b { color: var(--fg); font-weight: 500; }
-        #output .err { color: var(--red); display: block; }
-        #output .ok  { color: var(--amber); display: block; }
+
+        #output>div {
+            margin-bottom: 4px;
+        }
+
+        #output .cmd {
+            color: var(--fg);
+        }
+
+        #output .cmd .ps1 {
+            color: var(--amber);
+        }
+
+        #output .out {
+            color: var(--fg-dim);
+            display: block;
+        }
+
+        #output .out b {
+            color: var(--fg);
+            font-weight: 500;
+        }
+
+        #output .err {
+            color: var(--red);
+            display: block;
+        }
+
+        #output .ok {
+            color: var(--amber);
+            display: block;
+        }
 
         .prompt {
             display: flex;
@@ -273,12 +394,14 @@
             background: linear-gradient(to top, var(--bg) 70%, transparent);
             padding: 10px 0 14px;
         }
+
         .prompt .ps1 {
             color: var(--amber);
             margin-right: 10px;
             white-space: nowrap;
             flex: none;
         }
+
         .prompt input {
             flex: 1;
             background: transparent;
@@ -291,6 +414,7 @@
             min-width: 0;
             text-shadow: var(--glow);
         }
+
         .prompt .cursor {
             display: inline-block;
             width: 0.55em;
@@ -301,7 +425,12 @@
             flex: none;
             margin-left: 1px;
         }
-        @keyframes blink { 50% { opacity: 0; } }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
 
         .hint {
             color: var(--fg-mute);
@@ -309,6 +438,7 @@
             margin: 4px 0 0;
             line-height: 1.5;
         }
+
         .hint kbd {
             font: inherit;
             border: 1px solid var(--fg-mute);
@@ -317,150 +447,208 @@
             color: var(--fg-dim);
         }
 
-        .section.flash { animation: flash 700ms ease-out 1; }
+        .section.flash {
+            animation: flash 700ms ease-out 1;
+        }
+
         @keyframes flash {
-            0%   { background: color-mix(in oklch, var(--fg) 14%, transparent); }
-            100% { background: transparent; }
+            0% {
+                background: color-mix(in oklch, var(--fg) 14%, transparent);
+            }
+
+            100% {
+                background: transparent;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.001ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.001ms !important;
             }
-            html { scroll-behavior: auto; }
-            .section { opacity: 1; transform: none; }
-            .prompt .cursor { animation: none; opacity: 1; }
-            body::before { display: none; }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .section {
+                opacity: 1;
+                transform: none;
+            }
+
+            .prompt .cursor {
+                animation: none;
+                opacity: 1;
+            }
+
+            body::before {
+                display: none;
+            }
         }
 
-        ::selection { background: var(--fg); color: var(--bg); text-shadow: none; }
+        ::selection {
+            background: var(--fg);
+            color: var(--bg);
+            text-shadow: none;
+        }
     </style>
 </head>
+
 <body>
-<main>
-    <header class="head">
-        <span class="name">DevBlog</span>
-        <div class="nav-links">
-            <a href="index.html">Главная</a>
-            <a href="projects.html">Проекты</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html" class="active">Контакты</a>
-        </div>
-    </header>
-
-    <section class="section in" id="sec-contact" data-name="contact">
-        <h2>контакты <span class="rest"></span><span class="count">3</span></h2>
-        <div class="contact-block">
-            <div class="contact-line">
-                <span class="contact-label">email</span>
-                <span class="contact-value"><a href="mailto:egorkurakin325@gmail.com" data-id="email">egorkurakin325@gmail.com</a><span class="count-num has-value" data-count-for="email">42</span></span>
+    <main>
+        <header class="head">
+            <span class="name">DevBlog</span>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="projects.html">Проекты</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html" class="active">Контакты</a>
             </div>
-            <div class="contact-line">
-                <span class="contact-label"></span>
-                <span class="contact-value"><small><span class="warn">📌 только рабочие вопросы.</span> личку в соцсетях читаю реже.</small></span>
+        </header>
+
+        <section class="section in" id="sec-contact" data-name="contact">
+            <h2>контакты <span class="rest"></span><span class="count">3</span></h2>
+            <div class="contact-block">
+                <div class="contact-line">
+                    <span class="contact-label">email</span>
+                    <span class="contact-value"><a href="mailto:egorkurakin325@gmail.com"
+                            data-id="email">egorkurakin325@gmail.com</a><span class="count-num has-value"
+                            data-count-for="email">42</span></span>
+                </div>
+                <div class="contact-line">
+                    <span class="contact-label"></span>
+                    <span class="contact-value"><small><span class="warn">📌 только рабочие вопросы.</span> личку в
+                            соцсетях читаю реже.</small></span>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section in" id="sec-social" data-name="social">
-        <h2>соцсети <span class="rest"></span><span class="count">4</span></h2>
-        <ul class="links">
-            <li><a class="link" href="https://github.com/trytotry61" target="_blank" rel="noopener noreferrer" data-id="github">
-                <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"></path></svg></span>
-                <span class="name">GitHub<span class="sub">/trytotry61</span></span>
-                <span class="count-num has-value" data-count-for="github">89</span>
-            </a></li>
-            <li><a class="link" href="https://t.me/ichhabekeinherz" target="_blank" rel="noopener noreferrer" data-id="telegram">
-                <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22.2 2.7 1.7 10.6c-1.4.6-1.4 1.4-.3 1.7l5.2 1.7 2 6.1c.3.7.5 1 1.1 1 .5 0 .8-.3 1.2-.7l3-2.9 5.2 3.8c1 .5 1.6.3 1.9-.9L23.5 4.3c.3-1.4-.6-2-1.3-1.6zM17 7.4 8.9 14.7l-.3 3.6L7 13.3 17 6.8c.5-.3.9.1.5.4z"></path></svg></span>
-                <span class="name">Telegram<span class="sub">@ichhabekeinherz</span></span>
-                <span class="count-num has-value" data-count-for="telegram">156</span>
-            </a></li>
-            <li><a class="link" href="https://www.youtube.com/@DevBlog" target="_blank" rel="noopener noreferrer" data-id="youtube">
-                <span class="name">LinkedIn<span class="sub"></span></span>
-                <span class="count-num has-value" data-count-for="youtube">234</span>
-            </a></li>
-            <li><a class="link" href="#" target="_blank" rel="noopener noreferrer" data-id="x">
-                <span class="name">Instagram<span class="sub">@trytotry61</span></span>
-                <span class="count-num" data-count-for="x">0</span>
-            </a></li>
-        </ul>
-    </section>
+        <section class="section in" id="sec-social" data-name="social">
+            <h2>соцсети <span class="rest"></span><span class="count">4</span></h2>
+            <ul class="links">
+                <li><a class="link" href="https://github.com/trytotry61" target="_blank" rel="noopener noreferrer"
+                        data-id="github">
+                        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z">
+                                </path>
+                            </svg></span>
+                        <span class="name">GitHub<span class="sub">/trytotry61</span></span>
+                        <span class="count-num has-value" data-count-for="github">89</span>
+                    </a></li>
+                <li><a class="link" href="https://t.me/ichhabekeinherz" target="_blank" rel="noopener noreferrer"
+                        data-id="telegram">
+                        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22.2 2.7 1.7 10.6c-1.4.6-1.4 1.4-.3 1.7l5.2 1.7 2 6.1c.3.7.5 1 1.1 1 .5 0 .8-.3 1.2-.7l3-2.9 5.2 3.8c1 .5 1.6.3 1.9-.9L23.5 4.3c.3-1.4-.6-2-1.3-1.6zM17 7.4 8.9 14.7l-.3 3.6L7 13.3 17 6.8c.5-.3.9.1.5.4z">
+                                </path>
+                            </svg></span>
+                        <span class="name">Telegram<span class="sub">@ichhabekeinherz</span></span>
+                        <span class="count-num has-value" data-count-for="telegram">156</span>
+                    </a></li>
+                <li><a class="link" href="https://www.youtube.com/@DevBlog" target="_blank" rel="noopener noreferrer"
+                        data-id="youtube">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                            <path
+                                d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.45c1.55 0 3.36.86 3.36 3.7z" />
+                        </svg>
+                        <span class="name">LinkedIn<span class="sub"></span></span>
+                        <span class="count-num has-value" data-count-for="youtube">234</span>
+                    </a></li>
+                <li><a class="link" href="#" target="_blank" rel="noopener noreferrer" data-id="x">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                            <path
+                                d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm10.5 1.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+                        </svg>
+                        <span class="name">Instagram<span class="sub">@trytotry61</span></span>
+                        <span class="count-num" data-count-for="x">0</span>
+                    </a></li>
+            </ul>
+        </section>
 
-    <section class="section in" id="sec-support" data-name="support">
-        <h2>поддержать <span class="rest"></span><span class="count">2</span></h2>
-        <ul class="links">
-            <li><a class="link" href="#" target="_blank" rel="noopener noreferrer" data-id="buymeacoffee">
-                <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 2h2v2h4v2h-6a2 2 0 0 0 0 4h2a4 4 0 0 1 0 8h-2v2h-2v-2H7v-2h6a2 2 0 0 0 0-4h-2a4 4 0 0 1 0-8h0V2z"></path></svg></span>
-                <span class="name">Buy Me a Coffee<span class="sub">/devblog</span></span>
-                <span class="tag support">☕</span>
-            </a></li>
-        </ul>
-    </section>
+        <section class="section in" id="sec-support" data-name="support">
+            <h2>поддержать <span class="rest"></span><span class="count">2</span></h2>
+            <ul class="links">
+                <li><a class="link" href="#" target="_blank" rel="noopener noreferrer" data-id="buymeacoffee">
+                        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M11 2h2v2h4v2h-6a2 2 0 0 0 0 4h2a4 4 0 0 1 0 8h-2v2h-2v-2H7v-2h6a2 2 0 0 0 0-4h-2a4 4 0 0 1 0-8h0V2z">
+                                </path>
+                            </svg></span>
+                        <span class="name">Buy Me a Coffee<span class="sub">/devblog</span></span>
+                        <span class="tag support">☕</span>
+                    </a></li>
+            </ul>
+        </section>
 
-    <div id="output" aria-live="polite" aria-atomic="false"></div>
+        <div id="output" aria-live="polite" aria-atomic="false"></div>
 
-    <form class="prompt" id="prompt" autocomplete="off">
-        <label for="cli" class="ps1">devblog:~$</label>
-        <input id="cli" name="cli" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="консоль">
-        <span class="cursor" aria-hidden="true"></span>
-    </form>
-    <p class="hint">
-        набери <kbd>help</kbd> · история — <kbd>↑</kbd>/<kbd>↓</kbd> · автодополнение — <kbd>Tab</kbd> · или просто кликни ссылку выше
-    </p>
-</main>
+        <form class="prompt" id="prompt" autocomplete="off">
+            <label for="cli" class="ps1">devblog:~$</label>
+            <input id="cli" name="cli" type="text" autocomplete="off" autocapitalize="off" autocorrect="off"
+                spellcheck="false" aria-label="консоль">
+            <span class="cursor" aria-hidden="true"></span>
+        </form>
+        <p class="hint">
+            набери <kbd>help</kbd> · история — <kbd>↑</kbd>/<kbd>↓</kbd> · автодополнение — <kbd>Tab</kbd> · или просто
+            кликни ссылку выше
+        </p>
+    </main>
 
-<script>
-(() => {
-    'use strict';
+    <script>
+        (() => {
+            'use strict';
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const $output  = document.getElementById('output');
-    const $prompt  = document.getElementById('prompt');
-    const $cli     = document.getElementById('cli');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const $output = document.getElementById('output');
+            const $prompt = document.getElementById('prompt');
+            const $cli = document.getElementById('cli');
 
-    const sections = document.querySelectorAll('.section');
-    sections.forEach((el, i) => {
-        if (reduceMotion) { el.classList.add('in'); return; }
-        setTimeout(() => el.classList.add('in'), 40 * i);
-    });
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((el, i) => {
+                if (reduceMotion) { el.classList.add('in'); return; }
+                setTimeout(() => el.classList.add('in'), 40 * i);
+            });
 
-    const LINKS = {
-        email:      { url: 'mailto:egorkurakin325@gmail.com',    label: 'egorkurakin325@gmail.com' },
-        github:     { url: 'https://github.com/trytotry61',      label: 'GitHub' },
-        telegram:   { url: 'https://t.me/ichhabekeinherz',       label: 'Telegram' },
-        youtube:    { url: '#',   label: 'LinkedIn' },
-        x:          { url: '#',                                  label: 'X (Twitter)' },
-        buymeacoffee: { url: '#',                               label: 'Buy Me a Coffee' },
-    };
+            const LINKS = {
+                email: { url: 'mailto:egorkurakin325@gmail.com', label: 'egorkurakin325@gmail.com' },
+                github: { url: 'https://github.com/trytotry61', label: 'GitHub' },
+                telegram: { url: 'https://t.me/ichhabekeinherz', label: 'Telegram' },
+                youtube: { url: '#', label: 'LinkedIn' },
+                x: { url: '#', label: 'X (Twitter)' },
+                buymeacoffee: { url: '#', label: 'Buy Me a Coffee' },
+            };
 
-    const GROUPS = {
-        contact: ['email', 'phone'],
-        social:  ['github', 'telegram', 'youtube', 'x'],
-        support: ['buymeacoffee', 'boosty'],
-    };
+            const GROUPS = {
+                contact: ['email', 'phone'],
+                social: ['github', 'telegram', 'youtube', 'x'],
+                support: ['buymeacoffee', 'boosty'],
+            };
 
 
-    const ABOUT = [
-        'DevBlog — минималистичный блог разработчика.',
-        '',
-        '  · пишу о коде, архитектуре и девелопменте.',
-        '  · студент КФ МГТУ им. Баумана.',
-        '  · направление: прикладная информатика.',
-        '',
-        'этот терминал — все мои контакты в одном месте.',
-        'кликай ссылки выше или набирай `open <name>`.',
-    ];
+            const ABOUT = [
+                'DevBlog — минималистичный блог разработчика.',
+                '',
+                '  · пишу о коде, архитектуре и девелопменте.',
+                '  · студент КФ МГТУ им. Баумана.',
+                '  · направление: прикладная информатика.',
+                '',
+                'этот терминал — все мои контакты в одном месте.',
+                'кликай ссылки выше или набирай `open <name>`.',
+            ];
 
-    const cmdList = [
-        'help', 'ls', 'open', 'whoami', 'neofetch', 'cat', 'social',
-        'support', 'contact', 'date', 'echo', 'clear', 'history',
-        'fortune', 'pwd', 'sudo', 'exit',
-    ];
+            const cmdList = [
+                'help', 'ls', 'open', 'whoami', 'neofetch', 'cat', 'social',
+                'support', 'contact', 'date', 'echo', 'clear', 'history',
+                'fortune', 'pwd', 'sudo', 'exit',
+            ];
 
-    const HELP = (
-`команды:
+            const HELP = (
+                `команды:
 
   help               эта справка
   ls [секция]        список ссылок: contact · social · support · all
@@ -477,58 +665,58 @@
 
 ссылки по имени:
   ${Object.keys(LINKS).join(', ')}`
-    );
+            );
 
-    const history = [];
-    let histIdx = -1;
+            const history = [];
+            let histIdx = -1;
 
-    const escapeHtml = s => s.replace(/[&<>"']/g, c => ({
-        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-    }[c]));
+            const escapeHtml = s => s.replace(/[&<>"']/g, c => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[c]));
 
-    function print(html, cls) {
-        const div = document.createElement('div');
-        if (cls) div.className = cls;
-        div.innerHTML = html;
-        $output.appendChild(div);
-        requestAnimationFrame(() => {
-            $prompt.scrollIntoView({ block: 'end', behavior: reduceMotion ? 'auto' : 'smooth' });
-        });
-    }
-    const printOut = t => print(`<span class="out">${escapeHtml(t)}</span>`);
-    const printErr = t => print(`<span class="err">${escapeHtml(t)}</span>`);
-    const printOk  = t => print(`<span class="ok">${escapeHtml(t)}</span>`);
+            function print(html, cls) {
+                const div = document.createElement('div');
+                if (cls) div.className = cls;
+                div.innerHTML = html;
+                $output.appendChild(div);
+                requestAnimationFrame(() => {
+                    $prompt.scrollIntoView({ block: 'end', behavior: reduceMotion ? 'auto' : 'smooth' });
+                });
+            }
+            const printOut = t => print(`<span class="out">${escapeHtml(t)}</span>`);
+            const printErr = t => print(`<span class="err">${escapeHtml(t)}</span>`);
+            const printOk = t => print(`<span class="ok">${escapeHtml(t)}</span>`);
 
-    function printCommand(raw) {
-        const div = document.createElement('div');
-        div.className = 'cmd';
-        div.innerHTML = `<span class="ps1">devblog:~$</span> ${escapeHtml(raw)}`;
-        $output.appendChild(div);
-    }
+            function printCommand(raw) {
+                const div = document.createElement('div');
+                div.className = 'cmd';
+                div.innerHTML = `<span class="ps1">devblog:~$</span> ${escapeHtml(raw)}`;
+                $output.appendChild(div);
+            }
 
-    function jumpTo(name) {
-        const el = document.getElementById('sec-' + name);
-        if (!el) { printErr(`нет секции: ${name}`); return; }
-        el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-        el.classList.remove('flash');
-        void el.offsetWidth;
-        el.classList.add('flash');
-        printOk(`→ ${name}`);
-    }
+            function jumpTo(name) {
+                const el = document.getElementById('sec-' + name);
+                if (!el) { printErr(`нет секции: ${name}`); return; }
+                el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+                el.classList.remove('flash');
+                void el.offsetWidth;
+                el.classList.add('flash');
+                printOk(`→ ${name}`);
+            }
 
-    function lsSection(name) {
-        const ids = GROUPS[name];
-        if (!ids) return null;
-        const lines = ids.map(id => {
-            const l = LINKS[id];
-            return `  ${id.padEnd(12)} ${l.label}`;
-        });
-        return `${name}/\n${lines.join('\n')}`;
-    }
+            function lsSection(name) {
+                const ids = GROUPS[name];
+                if (!ids) return null;
+                const lines = ids.map(id => {
+                    const l = LINKS[id];
+                    return `  ${id.padEnd(12)} ${l.label}`;
+                });
+                return `${name}/\n${lines.join('\n')}`;
+            }
 
-    function neofetchText() {
-        return (
-`user        : devblog@terminal
+            function neofetchText() {
+                return (
+                    `user        : devblog@terminal
 os          : windeows (x86_64)
 shell       : /bin/zsh
 uptime      : 42 days
@@ -536,206 +724,207 @@ cpu         : ryzen 7 5700@ 3.7GHz
 memory      : 16GB · 42% used
 editor      : vs code
 status      : online · learning every day`
-        );
-    }
-
-    function trackClick(id) {
-        try {
-            const url = `/api/click?id=${encodeURIComponent(id)}`;
-            if (navigator.sendBeacon) navigator.sendBeacon(url);
-            else fetch(url, { method: 'POST', keepalive: true }).catch(() => {});
-        } catch (_) {}
-    }
-
-    function execute(rawInput) {
-        const raw = rawInput.trim();
-        if (!raw) { printCommand(''); return; }
-        printCommand(raw);
-        history.push(raw);
-        histIdx = history.length;
-
-        const parts = raw.split(/\s+/);
-        const cmd = parts[0].toLowerCase();
-        const arg = parts.slice(1).join(' ');
-        const arg0 = parts[1] ? parts[1].toLowerCase() : '';
-
-        switch (cmd) {
-            case 'help':
-            case '?':
-                printOut(HELP);
-                break;
-
-            case 'ls': {
-                if (!arg || arg0 === 'all') {
-                    const blocks = ['contact', 'social', 'support']
-                        .map(g => lsSection(g)).filter(Boolean).join('\n\n');
-                    printOut(blocks);
-                } else if (GROUPS[arg0]) {
-                    printOut(lsSection(arg0));
-                } else {
-                    printErr(`ls: нет секции: ${arg0}. доступно: contact, social, support, all`);
-                }
-                break;
+                );
             }
 
-            case 'open': {
-                if (!arg0) { printErr('open: нужно имя. пример: open github'); break; }
-                const link = LINKS[arg0];
-                if (!link) {
-                    printErr(`open: неизвестная ссылка: ${arg0}. имена: ${Object.keys(LINKS).join(', ')}`);
-                    break;
-                }
-                if (link.url === '#') {
-                    printErr(`open: ссылка ${link.label} пока не добавлена`);
-                    break;
-                }
-                if (link.url.startsWith('mailto:') || link.url.startsWith('tel:')) {
-                    trackClick(arg0);
-                    window.location.href = link.url;
-                    printOk(`${link.label} → открыт`);
-                } else {
-                    const w = window.open(link.url, '_blank', 'noopener,noreferrer');
-                    if (!w) printErr('open: всплывающее окно заблокировано. кликни ссылку в списке.');
-                    else { trackClick(arg0); printOk(`открыто ${link.label} → ${link.url}`); }
-                }
-                break;
+            function trackClick(id) {
+                try {
+                    const url = `/api/click?id=${encodeURIComponent(id)}`;
+                    if (navigator.sendBeacon) navigator.sendBeacon(url);
+                    else fetch(url, { method: 'POST', keepalive: true }).catch(() => { });
+                } catch (_) { }
             }
 
-            case 'whoami':
-                printOut('DevBlog — блог разработчика. Студент, кодер, минималист.');
-                break;
+            function execute(rawInput) {
+                const raw = rawInput.trim();
+                if (!raw) { printCommand(''); return; }
+                printCommand(raw);
+                history.push(raw);
+                histIdx = history.length;
 
-            case 'neofetch':
-                printOut(neofetchText());
-                break;
+                const parts = raw.split(/\s+/);
+                const cmd = parts[0].toLowerCase();
+                const arg = parts.slice(1).join(' ');
+                const arg0 = parts[1] ? parts[1].toLowerCase() : '';
 
-            case 'cat': {
-                if (['about','about.txt','readme','readme.md'].includes(arg0)) {
-                    printOut(ABOUT.join('\n'));
-                } else if (!arg0) {
-                    printErr('cat: нужен файл. пример: cat about');
-                } else {
-                    printErr(`cat: ${arg0}: нет такого файла. попробуй: about`);
+                switch (cmd) {
+                    case 'help':
+                    case '?':
+                        printOut(HELP);
+                        break;
+
+                    case 'ls': {
+                        if (!arg || arg0 === 'all') {
+                            const blocks = ['contact', 'social', 'support']
+                                .map(g => lsSection(g)).filter(Boolean).join('\n\n');
+                            printOut(blocks);
+                        } else if (GROUPS[arg0]) {
+                            printOut(lsSection(arg0));
+                        } else {
+                            printErr(`ls: нет секции: ${arg0}. доступно: contact, social, support, all`);
+                        }
+                        break;
+                    }
+
+                    case 'open': {
+                        if (!arg0) { printErr('open: нужно имя. пример: open github'); break; }
+                        const link = LINKS[arg0];
+                        if (!link) {
+                            printErr(`open: неизвестная ссылка: ${arg0}. имена: ${Object.keys(LINKS).join(', ')}`);
+                            break;
+                        }
+                        if (link.url === '#') {
+                            printErr(`open: ссылка ${link.label} пока не добавлена`);
+                            break;
+                        }
+                        if (link.url.startsWith('mailto:') || link.url.startsWith('tel:')) {
+                            trackClick(arg0);
+                            window.location.href = link.url;
+                            printOk(`${link.label} → открыт`);
+                        } else {
+                            const w = window.open(link.url, '_blank', 'noopener,noreferrer');
+                            if (!w) printErr('open: всплывающее окно заблокировано. кликни ссылку в списке.');
+                            else { trackClick(arg0); printOk(`открыто ${link.label} → ${link.url}`); }
+                        }
+                        break;
+                    }
+
+                    case 'whoami':
+                        printOut('DevBlog — блог разработчика. Студент, кодер, минималист.');
+                        break;
+
+                    case 'neofetch':
+                        printOut(neofetchText());
+                        break;
+
+                    case 'cat': {
+                        if (['about', 'about.txt', 'readme', 'readme.md'].includes(arg0)) {
+                            printOut(ABOUT.join('\n'));
+                        } else if (!arg0) {
+                            printErr('cat: нужен файл. пример: cat about');
+                        } else {
+                            printErr(`cat: ${arg0}: нет такого файла. попробуй: about`);
+                        }
+                        break;
+                    }
+
+                    case 'contact':
+                    case 'social':
+                    case 'support':
+                        jumpTo(cmd);
+                        break;
+
+                    case 'date': printOut(new Date().toString()); break;
+                    case 'echo': printOut(arg); break;
+                    case 'fortune': printOut(FORTUNES[Math.floor(Math.random() * FORTUNES.length)]); break;
+                    case 'history': printOut(history.map((c, i) => `  ${String(i + 1).padStart(3)}  ${c}`).join('\n')); break;
+
+                    case 'clear':
+                    case 'cls':
+                        $output.innerHTML = '';
+                        break;
+
+                    case 'pwd': printOut('/home/devblog'); break;
+                    case 'sudo': printErr('sudo: command not found. you are not in sudoers file.'); break;
+
+                    case 'exit':
+                    case 'logout':
+                    case 'quit':
+                        printOut('logout: не получится. терминал остаётся с тобой.');
+                        break;
+
+                    default:
+                        printErr(`${cmd}: команда не найдена. набери help.`);
                 }
-                break;
             }
 
-            case 'contact':
-            case 'social':
-            case 'support':
-                jumpTo(cmd);
-                break;
+            function complete() {
+                const value = $cli.value;
+                const parts = value.split(/\s+/);
+                if (parts.length <= 1) {
+                    const stem = parts[0] || '';
+                    const matches = cmdList.filter(c => c.startsWith(stem));
+                    if (matches.length === 1) $cli.value = matches[0] + ' ';
+                    else if (matches.length > 1) { printCommand(value); printOut(matches.join('  ')); }
+                    return;
+                }
+                const head = parts[0].toLowerCase();
+                const stem = parts[parts.length - 1].toLowerCase();
+                let pool = [];
+                if (head === 'open') pool = Object.keys(LINKS);
+                else if (head === 'ls') pool = ['contact', 'social', 'support', 'all'];
+                else if (head === 'cat') pool = ['about'];
+                if (!pool.length) return;
+                const matches = pool.filter(c => c.startsWith(stem));
+                if (matches.length === 1) {
+                    parts[parts.length - 1] = matches[0];
+                    $cli.value = parts.join(' ');
+                } else if (matches.length > 1) {
+                    printCommand(value); printOut(matches.join('  '));
+                }
+            }
 
-            case 'date':   printOut(new Date().toString()); break;
-            case 'echo':   printOut(arg); break;
-            case 'fortune':printOut(FORTUNES[Math.floor(Math.random() * FORTUNES.length)]); break;
-            case 'history':printOut(history.map((c, i) => `  ${String(i+1).padStart(3)}  ${c}`).join('\n')); break;
+            $prompt.addEventListener('submit', e => {
+                e.preventDefault();
+                const v = $cli.value;
+                $cli.value = '';
+                execute(v);
+            });
 
-            case 'clear':
-            case 'cls':
-                $output.innerHTML = '';
-                break;
-
-            case 'pwd':    printOut('/home/devblog'); break;
-            case 'sudo':   printErr('sudo: command not found. you are not in sudoers file.'); break;
-
-            case 'exit':
-            case 'logout':
-            case 'quit':
-                printOut('logout: не получится. терминал остаётся с тобой.');
-                break;
-
-            default:
-                printErr(`${cmd}: команда не найдена. набери help.`);
-        }
-    }
-
-    function complete() {
-        const value = $cli.value;
-        const parts = value.split(/\s+/);
-        if (parts.length <= 1) {
-            const stem = parts[0] || '';
-            const matches = cmdList.filter(c => c.startsWith(stem));
-            if (matches.length === 1) $cli.value = matches[0] + ' ';
-            else if (matches.length > 1) { printCommand(value); printOut(matches.join('  ')); }
-            return;
-        }
-        const head = parts[0].toLowerCase();
-        const stem = parts[parts.length - 1].toLowerCase();
-        let pool = [];
-        if (head === 'open')      pool = Object.keys(LINKS);
-        else if (head === 'ls')   pool = ['contact', 'social', 'support', 'all'];
-        else if (head === 'cat')  pool = ['about'];
-        if (!pool.length) return;
-        const matches = pool.filter(c => c.startsWith(stem));
-        if (matches.length === 1) {
-            parts[parts.length - 1] = matches[0];
-            $cli.value = parts.join(' ');
-        } else if (matches.length > 1) {
-            printCommand(value); printOut(matches.join('  '));
-        }
-    }
-
-    $prompt.addEventListener('submit', e => {
-        e.preventDefault();
-        const v = $cli.value;
-        $cli.value = '';
-        execute(v);
-    });
-
-    $cli.addEventListener('keydown', e => {
-        if (e.key === 'ArrowUp') {
-            if (history.length === 0) return;
-            e.preventDefault();
-            histIdx = Math.max(0, histIdx - 1);
-            $cli.value = history[histIdx] || '';
-            requestAnimationFrame(() => $cli.setSelectionRange($cli.value.length, $cli.value.length));
-        } else if (e.key === 'ArrowDown') {
-            if (history.length === 0) return;
-            e.preventDefault();
-            histIdx = Math.min(history.length, histIdx + 1);
-            $cli.value = history[histIdx] || '';
-        } else if (e.key === 'Tab') {
-            e.preventDefault();
-            complete();
-        } else if (e.key === 'l' && (e.ctrlKey || e.metaKey)) {
-            e.preventDefault();
-            $output.innerHTML = '';
-        } else if (e.key === 'c' && e.ctrlKey) {
-            e.preventDefault();
-            printCommand($cli.value);
-            printOut('^C');
-            $cli.value = '';
-        }
-    });
-
-    document.addEventListener('click', e => {
-        if (e.target.closest('a, button, input, label, textarea')) return;
-        const sel = window.getSelection();
-        if (sel && sel.toString().length > 0) return;
-        $cli.focus({ preventScroll: true });
-    });
-
-    document.querySelectorAll('a[data-id]').forEach(a => {
-        a.addEventListener('click', () => trackClick(a.dataset.id));
-    });
-
-    (async function loadCounts() {
-        try {
-            const r = await fetch('/api/counts');
-            if (!r.ok) return;
-            const data = await r.json();
-            const counts = data && data.counts || {};
-            document.querySelectorAll('[data-count-for]').forEach(el => {
-                const n = counts[el.dataset.countFor];
-                if (typeof n === 'number' && n > 0) {
-                    el.textContent = n.toLocaleString('ru-RU');
-                    el.classList.add('has-value');
+            $cli.addEventListener('keydown', e => {
+                if (e.key === 'ArrowUp') {
+                    if (history.length === 0) return;
+                    e.preventDefault();
+                    histIdx = Math.max(0, histIdx - 1);
+                    $cli.value = history[histIdx] || '';
+                    requestAnimationFrame(() => $cli.setSelectionRange($cli.value.length, $cli.value.length));
+                } else if (e.key === 'ArrowDown') {
+                    if (history.length === 0) return;
+                    e.preventDefault();
+                    histIdx = Math.min(history.length, histIdx + 1);
+                    $cli.value = history[histIdx] || '';
+                } else if (e.key === 'Tab') {
+                    e.preventDefault();
+                    complete();
+                } else if (e.key === 'l' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    $output.innerHTML = '';
+                } else if (e.key === 'c' && e.ctrlKey) {
+                    e.preventDefault();
+                    printCommand($cli.value);
+                    printOut('^C');
+                    $cli.value = '';
                 }
             });
-        } catch (_) {}
-    })();
-})();
-</script>
+
+            document.addEventListener('click', e => {
+                if (e.target.closest('a, button, input, label, textarea')) return;
+                const sel = window.getSelection();
+                if (sel && sel.toString().length > 0) return;
+                $cli.focus({ preventScroll: true });
+            });
+
+            document.querySelectorAll('a[data-id]').forEach(a => {
+                a.addEventListener('click', () => trackClick(a.dataset.id));
+            });
+
+            (async function loadCounts() {
+                try {
+                    const r = await fetch('/api/counts');
+                    if (!r.ok) return;
+                    const data = await r.json();
+                    const counts = data && data.counts || {};
+                    document.querySelectorAll('[data-count-for]').forEach(el => {
+                        const n = counts[el.dataset.countFor];
+                        if (typeof n === 'number' && n > 0) {
+                            el.textContent = n.toLocaleString('ru-RU');
+                            el.classList.add('has-value');
+                        }
+                    });
+                } catch (_) { }
+            })();
+        })();
+    </script>
 </body>
+
 </html>
