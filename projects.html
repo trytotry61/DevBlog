@@ -2,272 +2,568 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проекты - DevBlog</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#050806">
+    <meta name="color-scheme" content="dark">
+    <title>DevBlog — проекты</title>
+    <meta name="description" content="DevBlog — проекты и портфолио разработчика.">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;600;700&display=swap');
-
         :root {
-            --primary: #1d2b3e;
-            --surface: #faf8ff;
-            --surface-container: #eaedff;
-            --on-surface: #131b2e;
-            --outline-variant: #E2E8F0;
-            --charcoal: #0F172A;
+            --bg:        #050806;
+            --fg:        oklch(0.86 0.12 145);
+            --fg-dim:    oklch(0.62 0.08 145);
+            --fg-mute:   oklch(0.40 0.04 145);
+            --amber:     oklch(0.84 0.13 85);
+            --red:       oklch(0.72 0.18 25);
+            --glow:      0 0 1px currentColor, 0 0 8px color-mix(in oklch, currentColor 18%, transparent);
+            --font:      'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+            --maxw:      820px;
         }
 
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; background: var(--bg); }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF;
-            color: var(--on-surface);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            color: var(--fg);
+            font: 14px/1.6 var(--font);
+            min-height: 100dvh;
+            padding: clamp(16px, 4vw, 36px) clamp(14px, 4vw, 32px) 96px;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            caret-color: var(--fg);
+            overflow-x: hidden;
+        }
+        @media (min-width: 720px) { body { font-size: 15px; } }
+
+        body::before {
+            content: "";
+            position: fixed; inset: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0,0,0,0) 0,
+                rgba(0,0,0,0) 2px,
+                rgba(0,0,0,0.14) 3px,
+                rgba(0,0,0,0) 4px
+            );
+            pointer-events: none;
+            z-index: 50;
+            mix-blend-mode: multiply;
         }
 
-        main { flex: 1; }
-
-        h1, h2, h3, h4, h5, h6, .display-4, .navbar-brand {
-            font-family: 'Playfair Display', serif;
-            color: var(--charcoal);
-        }
-
-        h1 { font-size: 36px; font-weight: 600; line-height: 1.3; }
-        h2 { font-size: 28px; font-weight: 600; line-height: 1.4; }
-        
-        .display-lg { font-size: 56px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-
-        .body-lg { font-size: 20px; line-height: 1.7; }
-        .body-md { font-size: 16px; line-height: 1.6; }
-        
-        .label-caps {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            line-height: 1.0;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-
-        .container-content { max-width: 720px; margin: 0 auto; }
-        .section-gap { margin-top: 5rem; margin-bottom: 5rem; }
-
-
-        .navbar {
-            background-color: #FFFFFF !important;
-            border-bottom: 1px solid var(--outline-variant);
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        .navbar-brand { color: var(--charcoal) !important; font-size: 24px; font-weight: 700;}
-        .nav-link {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--on-surface) !important;
+        main {
+            max-width: var(--maxw);
+            margin: 0 auto;
             position: relative;
-        }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            bottom: 0; left: 0; background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-
-
-        .card, .shadow, .shadow-sm { box-shadow: none !important; }
-        
-        .editorial-card {
-            background-color:#ffffff;
-            border-radius: 0; 
-            padding: 2rem;
-        }
-        
-
-        img { border-radius: 0 !important; }
-
-
-        .btn-primary {
-            background-color: var(--charcoal);
-            border-color: var(--charcoal);
-            color: #FFFFFF;
-            border-radius: 0.25rem;
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            padding: 0.75rem 1.5rem;
-        }
-        .btn-primary:hover, .btn-primary:focus { background-color: #000000; border-color: #000000; color: #FFFFFF; }
-        
-        .btn-outline-secondary {
-            border: 1px solid var(--outline-variant);
-            color: var(--charcoal);
-            border-radius: 0.25rem;
-            background: transparent;
+            z-index: 1;
+            text-shadow: var(--glow);
         }
 
+        a { color: inherit; text-decoration: none; }
+        a:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
 
-        .badge {
-            border-radius: 0.25rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background-color: var(--surface-container) !important;
-            color: var(--primary) !important;
-            border: 1px solid var(--outline-variant);
-            padding: 0.5rem 0.75rem;
+        .head {
+            margin: 0 0 28px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 4px 14px;
+        }
+        .head .name {
+            color: var(--fg);
+            font-weight: 700;
+            font-size: 1.05em;
+        }
+        .head .name::before { content: "> "; color: var(--fg-mute); font-weight: 400; }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            color: var(--fg-dim);
+            transition: color 0.1s;
+        }
+        .nav-links a:hover { color: var(--fg); }
+        .nav-links a.active {
+            color: var(--fg);
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--fg);
         }
 
+        .section { margin: 28px 0; opacity: 0; transform: translateY(2px); }
+        .section.in { opacity: 1; transform: none; transition: opacity 220ms ease, transform 220ms ease; }
 
-        .form-control, .form-select {
-            border: none;
-            border-bottom: 1px solid var(--outline-variant);
-            border-radius: 0;
-            background-color: transparent;
-            padding-left: 0;
-            border-radius: 0.25rem; 
-            border: 1px solid var(--outline-variant);
-            padding: 0.75rem;
+        .section h2 {
+            font-size: inherit;
+            font-weight: 500;
+            margin: 0 0 16px;
+            color: var(--fg);
+            letter-spacing: 0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .form-control:focus, .form-select:focus {
-            box-shadow: none;
-            border-color: var(--primary);
+        .section h2::before { content: ">"; color: var(--fg-mute); font-weight: 400; }
+        .section h2 .rest {
+            flex: 1;
+            border-bottom: 1px dashed var(--fg-mute);
+            height: 0;
+            margin-left: 4px;
+            opacity: .6;
         }
-
-        blockquote {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
+        .section h2 .count {
+            color: var(--fg-mute);
             font-weight: 400;
-            line-height: 1.5;
-            border-left: 2px solid var(--primary);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
+            font-size: 0.85em;
         }
-        
-
-        footer {
-            background-color: #FFFFFF !important;
-            border-top: 1px solid var(--outline-variant);
-            color: var(--charcoal) !important;
+        .projects-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        
+        .projects-table th, .projects-table td {
+            text-align: left;
+            padding: 14px 8px;
+            border-bottom: 1px solid var(--fg-mute);
+        }
+        .projects-table th {
+            font-weight: 500;
+            color: var(--fg-dim);
+            letter-spacing: 0.05em;
+        }
+        .badge {
+            border: 1px solid var(--fg-mute);
+            padding: 2px 8px;
+            font-size: 0.65rem;
+            margin-right: 6px;
+            display: inline-block;
+        }
+        .link-repo {
+            border-bottom: 1px dotted var(--fg-mute);
+            transition: 0.1s;
+        }
+        .link-repo:hover {
+            color: var(--amber);
+            border-bottom-color: var(--amber);
+        }
+        blockquote {
+            margin: 40px 0 24px;
+            padding-left: 20px;
+            border-left: 2px solid var(--fg);
+            font-style: italic;
+            color: var(--fg-dim);
+        }
 
-        .table { margin-bottom: 0; }
-        .table th { font-family: 'Playfair Display', serif; color: var(--charcoal); border-bottom: 2px solid var(--charcoal); }
-        .table td { color: var(--on-surface); border-bottom: 1px solid var(--outline-variant); }
-        
 
-        .accordion-button {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            color: var(--charcoal);
-            background-color: transparent;
+
+        #output {
+            white-space: pre-wrap;
+            margin: 32px 0 4px;
+            word-break: break-word;
+        }
+        #output > div { margin-bottom: 4px; }
+        #output .cmd { color: var(--fg); }
+        #output .cmd .ps1 { color: var(--amber); }
+        #output .out { color: var(--fg-dim); display: block; }
+        #output .out b { color: var(--fg); font-weight: 500; }
+        #output .err { color: var(--red); display: block; }
+        #output .ok  { color: var(--amber); display: block; }
+
+        .prompt {
+            display: flex;
+            align-items: center;
+            margin-top: 6px;
+            position: sticky;
+            bottom: 0;
+            background: linear-gradient(to top, var(--bg) 70%, transparent);
+            padding: 10px 0 14px;
+        }
+        .prompt .ps1 {
+            color: var(--amber);
+            margin-right: 10px;
+            white-space: nowrap;
+            flex: none;
+        }
+        .prompt input {
+            flex: 1;
+            background: transparent;
             border: none;
-            border-bottom: 1px solid var(--outline-variant);
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            padding-left: 0;
-            padding-right: 0;
+            color: var(--fg);
+            font: inherit;
+            outline: none;
+            caret-color: transparent;
+            padding: 0;
+            min-width: 0;
+            text-shadow: var(--glow);
         }
-        .accordion-button:not(.collapsed) {
-            background-color: transparent;
-            color: var(--charcoal);
-            box-shadow: none;
+        .prompt .cursor {
+            display: inline-block;
+            width: 0.55em;
+            height: 1.05em;
+            background: var(--fg);
+            animation: blink 1.05s steps(2, jump-none) infinite;
+            box-shadow: var(--glow);
+            flex: none;
+            margin-left: 1px;
         }
-        .accordion-item { border: none; background-color: transparent; }
-        .accordion-body { padding-left: 0; padding-right: 0; }
+        @keyframes blink { 50% { opacity: 0; } }
 
+        .hint {
+            color: var(--fg-mute);
+            font-size: 0.85em;
+            margin: 4px 0 0;
+            line-height: 1.5;
+        }
+        .hint kbd {
+            font: inherit;
+            border: 1px solid var(--fg-mute);
+            padding: 0 5px;
+            border-radius: 2px;
+            color: var(--fg-dim);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+            html { scroll-behavior: auto; }
+            .section { opacity: 1; transform: none; }
+            .prompt .cursor { animation: none; opacity: 1; }
+            body::before { display: none; }
+        }
+
+        ::selection { background: var(--fg); color: var(--bg); text-shadow: none; }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
-    <div class="container container-content">
-        <a class="navbar-brand" href="index.html"><i class="bi bi-braces me-2"></i>DevBlog.</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="border:none;">
-            <i class="bi bi-list fs-2" style="color: var(--charcoal);"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNav">
-            <ul class="navbar-nav ms-auto gap-3 mt-3 mt-lg-0">
-                <li class="nav-item"><a class="nav-link " href="index.html">Главная</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Рубрики</a>
-                    <ul class="dropdown-menu rounded-0 border-0 border-start border-1 shadow-none" style="background: #F8FAFC; border-color: var(--outline-variant)!important;">
-                        <li><a class="dropdown-item label-caps" href="#">Frontend</a></li>
-                        <li><a class="dropdown-item label-caps" href="#">Backend</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link active" href="projects.html">Проекты</a></li>
-                <li class="nav-item"><a class="nav-link " href="faq.html">FAQ</a></li>
-                <li class="nav-item"><a class="nav-link " href="contact.html">Контакты</a></li>
-            </ul>
+<main>
+    <header class="head">
+        <span class="name">DevBlog</span>
+        <div class="nav-links">
+            <a href="index.html">Главная</a>
+            <a href="projects.html" class="active">Проекты</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Контакты</a>
         </div>
-    </div>
-</nav>
+    </header>
 
-<main class="container container-content section-gap">
-    <h1 class="mb-5">Избранные работы</h1>
-    
-    <div class="editorial-card mb-5">
-        <div class="table-responsive">
-            <table class="table align-middle">
-                <thead>
-                    <tr>
-                        <th scope="col" class="fs-5">Проект</th>
-                        <th scope="col" class="fs-5">Стек</th>
-                        <th scope="col" class="fs-5 text-end">Ссылка</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="py-4 font-inter">Система расписания для ВУЗа</td>
-                        <td class="py-4">
-                            <span class="badge">Node.js</span> 
-                            <span class="badge">React</span>
-                        </td>
-                        <td class="py-4 text-end label-caps"><a href="https://github.com/trytotry61/Schedule-for-University-and-College" class="text-dark text-decoration-none border-bottom border-dark">GitHub</a></td>
-                    </tr>
-                    <tr>
-                        <td class="py-4 font-inter">Бот для рассылки поздравлений</td>
-                        <td class="py-4">
-                            <span class="badge">Python</span> 
-                        </td>
-                        <td class="py-4 text-end label-caps"><a href="https://github.com/trytotry61/congratulations-bot" class="text-dark text-decoration-none border-bottom border-dark">GitHub</a></td>
-                    </tr>
-                    <tr>
-                        <td class="py-4 font-inter">Indoor-навигатор</td>
-                        <td class="py-4">
-                            <span class="badge">JavaScript</span>
-                            <span class="badge">Html+CSS</span> 
-                        </td>
-                        <td class="py-4 text-end label-caps"><a href="https://github.com/trytotry61/orbis" class="text-dark text-decoration-none border-bottom border-dark">GitHub</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    
-    <blockquote>
-        <i>«Технологии должны служить человечеству, а не наоборот»</i> — Тим Кук
-    </blockquote>
+    <section class="section in">
+        <h2>избранные работы <span class="rest"></span><span class="count">3</span></h2>
+        
+        <table class="projects-table">
+            <thead>
+                <tr><th>проект</th><th>стек</th><th>репозиторий</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Система расписания для ВУЗа</td>
+                    <td><span class="badge">Node.js</span> <span class="badge">React</span></td>
+                    <td><a href="https://github.com/trytotry61/Schedule-for-University-and-College" class="link-repo">github →</a></td>
+                </tr>
+                <tr>
+                    <td>Бот для рассылки поздравлений</td>
+                    <td><span class="badge">Python</span></td>
+                    <td><a href="https://github.com/trytotry61/congratulations-bot" class="link-repo">github →</a></td>
+                </tr>
+                <tr>
+                    <td>Indoor-навигатор</td>
+                    <td><span class="badge">JavaScript</span> <span class="badge">HTML/CSS</span></td>
+                    <td><a href="https://github.com/trytotry61/orbis" class="link-repo">github →</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
+    <blockquote>«Технологии должны служить человечеству, а не наоборот» — Тим Кук</blockquote>
+
+    <div id="output" aria-live="polite" aria-atomic="false"></div>
+
+    <form class="prompt" id="prompt" autocomplete="off">
+        <label for="cli" class="ps1">devblog:~$</label>
+        <input id="cli" name="cli" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="консоль">
+        <span class="cursor" aria-hidden="true"></span>
+    </form>
+    <p class="hint">
+        набери <kbd>help</kbd> · история — <kbd>↑</kbd>/<kbd>↓</kbd> · автодополнение — <kbd>Tab</kbd>
+    </p>
 </main>
 
-<footer class="py-5 mt-auto">
-    <div class="container container-content text-center">
-        <p class="mb-0 label-caps text-muted">&copy; 2026 DevBlog. Все права защищены.</p>
-    </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(() => {
+    'use strict';
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const $output  = document.getElementById('output');
+    const $prompt  = document.getElementById('prompt');
+    const $cli     = document.getElementById('cli');
+
+    const sections = document.querySelectorAll('.section');
+    sections.forEach((el, i) => {
+        if (reduceMotion) { el.classList.add('in'); return; }
+        setTimeout(() => el.classList.add('in'), 40 * i);
+    });
+
+    const PROJECTS = {
+        'расписание': 'Система расписания для ВУЗа. Стек: Node.js, React. Репозиторий: github.com/trytotry61/Schedule-for-University-and-College',
+        'бот': 'Бот для рассылки поздравлений. Стек: Python. Репозиторий: github.com/trytotry61/congratulations-bot',
+        'навигатор': 'Indoor-навигатор. Стек: JavaScript, HTML/CSS. Репозиторий: github.com/trytotry61/orbis',
+    };
+    const ABOUT = [
+        'DevBlog — минималистичный блог разработчика.',
+        '',
+        '  · пишу о коде, архитектуре и девелопменте.',
+        '  · студент КФ МГТУ им. Баумана.',
+        '  · направление: прикладная информатика.',
+        '',
+        'проекты — моё портфолио. всё на гитхабе.',
+    ];
+
+    const cmdList = [
+        'help', 'ls', 'info', 'whoami', 'neofetch', 'cat', 'date', 'echo',
+        'clear', 'history', 'fortune', 'pwd', 'sudo', 'exit', 'github',
+        'contact', 'faq', 'index',
+    ];
+
+    const HELP = (
+`команды:
+
+  help               эта справка
+  ls                 список проектов
+  info <проект>      подробнее о проекте (пример: info расписание)
+  whoami             кто я
+  neofetch           инфа о системе
+  cat about          подробнее обо мне
+  github             открыть GitHub профиль
+  index              вернуться на главную
+  contact            перейти на страницу контактов
+  faq                перейти на страницу FAQ
+  fortune            случайная цитата
+  history            предыдущие команды
+  date               текущая дата/время
+  echo <текст>       напечатать текст
+  clear              очистить вывод
+
+доступные проекты: расписание, бот, навигатор`
+    );
+
+    const history = [];
+    let histIdx = -1;
+
+    const escapeHtml = s => s.replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+
+    function print(html, cls) {
+        const div = document.createElement('div');
+        if (cls) div.className = cls;
+        div.innerHTML = html;
+        $output.appendChild(div);
+        requestAnimationFrame(() => {
+            $prompt.scrollIntoView({ block: 'end', behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
+    }
+    const printOut = t => print(`<span class="out">${escapeHtml(t)}</span>`);
+    const printErr = t => print(`<span class="err">${escapeHtml(t)}</span>`);
+    const printOk  = t => print(`<span class="ok">${escapeHtml(t)}</span>`);
+
+    function printCommand(raw) {
+        const div = document.createElement('div');
+        div.className = 'cmd';
+        div.innerHTML = `<span class="ps1">devblog:~$</span> ${escapeHtml(raw)}`;
+        $output.appendChild(div);
+    }
+
+    function neofetchText() {
+        return (
+`user        : devblog@terminal
+os          : windows (x86_64)
+shell       : /bin/zsh
+uptime      : 42 days
+cpu         : ryzen 7 5700  @ 3.7GHz
+memory      : 16GB · 42% used
+editor      : vs code
+status      : online · building things`
+        );
+    }
+
+    function execute(rawInput) {
+        const raw = rawInput.trim();
+        if (!raw) { printCommand(''); return; }
+        printCommand(raw);
+        history.push(raw);
+        histIdx = history.length;
+
+        const parts = raw.split(/\s+/);
+        const cmd = parts[0].toLowerCase();
+        const arg = parts.slice(1).join(' ');
+        const arg0 = parts[1] ? parts[1].toLowerCase() : '';
+
+        switch (cmd) {
+            case 'help':
+            case '?':
+                printOut(HELP);
+                break;
+
+            case 'ls':
+                printOut('проекты:\n  · расписание (система для ВУЗа)\n  · бот (рассылка поздравлений)\n  · навигатор (indoor-навигатор)');
+                break;
+
+            case 'info': {
+                if (!arg) {
+                    printErr('info: нужен проект. пример: info расписание');
+                    break;
+                }
+                const content = PROJECTS[arg.toLowerCase()];
+                if (content) {
+                    printOut(content);
+                } else {
+                    printErr(`info: проект "${arg}" не найден. доступно: расписание, бот, навигатор`);
+                }
+                break;
+            }
+
+            case 'whoami':
+                printOut('DevBlog — блог разработчика. Студент, кодер, минималист.');
+                break;
+
+            case 'neofetch':
+                printOut(neofetchText());
+                break;
+
+            case 'cat': {
+                if (['about','about.txt','readme','readme.md'].includes(arg0)) {
+                    printOut(ABOUT.join('\n'));
+                } else if (!arg0) {
+                    printErr('cat: нужен файл. пример: cat about');
+                } else {
+                    printErr(`cat: ${arg0}: нет такого файла. попробуй: about`);
+                }
+                break;
+            }
+
+            case 'github':
+                printOk('→ открываю GitHub...');
+                setTimeout(() => { window.open('https://github.com/trytotry61', '_blank'); }, 200);
+                break;
+
+            case 'index':
+                printOk('→ возвращаюсь на главную...');
+                setTimeout(() => { window.location.href = 'index.html'; }, 200);
+                break;
+
+            case 'contact':
+                printOk('→ открываю страницу контактов...');
+                setTimeout(() => { window.location.href = 'contact.html'; }, 200);
+                break;
+
+            case 'faq':
+                printOk('→ открываю страницу FAQ...');
+                setTimeout(() => { window.location.href = 'faq.html'; }, 200);
+                break;
+
+            case 'date':   printOut(new Date().toString()); break;
+            case 'echo':   printOut(arg); break;
+            case 'history':printOut(history.map((c, i) => `  ${String(i+1).padStart(3)}  ${c}`).join('\n')); break;
+
+            case 'clear':
+            case 'cls':
+                $output.innerHTML = '';
+                break;
+
+            case 'pwd':    printOut('/home/devblog/projects'); break;
+            case 'sudo':   printErr('sudo: command not found.'); break;
+
+            case 'exit':
+            case 'logout':
+            case 'quit':
+                printOut('logout: не получится. терминал остаётся с тобой.');
+                break;
+
+            default:
+                printErr(`${cmd}: команда не найдена. набери help.`);
+        }
+    }
+
+    function complete() {
+        const value = $cli.value;
+        const parts = value.split(/\s+/);
+        if (parts.length <= 1) {
+            const stem = parts[0] || '';
+            const matches = cmdList.filter(c => c.startsWith(stem));
+            if (matches.length === 1) $cli.value = matches[0] + ' ';
+            else if (matches.length > 1) { printCommand(value); printOut(matches.join('  ')); }
+            return;
+        }
+        const head = parts[0].toLowerCase();
+        const stem = parts[parts.length - 1].toLowerCase();
+        let pool = [];
+        if (head === 'info')  pool = ['расписание', 'бот', 'навигатор'];
+        else if (head === 'cat') pool = ['about'];
+        if (!pool.length) return;
+        const matches = pool.filter(c => c.toLowerCase().startsWith(stem.toLowerCase()));
+        if (matches.length === 1) {
+            parts[parts.length - 1] = matches[0];
+            $cli.value = parts.join(' ');
+        } else if (matches.length > 1) {
+            printCommand(value); printOut(matches.join('  '));
+        }
+    }
+
+    $prompt.addEventListener('submit', e => {
+        e.preventDefault();
+        const v = $cli.value;
+        $cli.value = '';
+        execute(v);
+    });
+
+    $cli.addEventListener('keydown', e => {
+        if (e.key === 'ArrowUp') {
+            if (history.length === 0) return;
+            e.preventDefault();
+            histIdx = Math.max(0, histIdx - 1);
+            $cli.value = history[histIdx] || '';
+            requestAnimationFrame(() => $cli.setSelectionRange($cli.value.length, $cli.value.length));
+        } else if (e.key === 'ArrowDown') {
+            if (history.length === 0) return;
+            e.preventDefault();
+            histIdx = Math.min(history.length, histIdx + 1);
+            $cli.value = history[histIdx] || '';
+        } else if (e.key === 'Tab') {
+            e.preventDefault();
+            complete();
+        } else if (e.key === 'l' && (e.ctrlKey || e.metaKey)) {
+            e.preventDefault();
+            $output.innerHTML = '';
+        } else if (e.key === 'c' && e.ctrlKey) {
+            e.preventDefault();
+            printCommand($cli.value);
+            printOut('^C');
+            $cli.value = '';
+        }
+    });
+
+    document.addEventListener('click', e => {
+        if (e.target.closest('a, button, input, label, textarea')) return;
+        const sel = window.getSelection();
+        if (sel && sel.toString().length > 0) return;
+        $cli.focus({ preventScroll: true });
+    });
+})();
+</script>
 </body>
 </html>
